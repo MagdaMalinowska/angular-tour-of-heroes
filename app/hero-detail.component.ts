@@ -3,7 +3,6 @@ import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 
 import { HeroService } from './hero.service';
-import 'rxjs/add/operator/switchMap';
 import { Hero } from './hero'
 
 @Component({
@@ -31,5 +30,9 @@ export class HeroDetailComponent implements OnInit {
     this.location.back();
   }
 
+  save(): void {
+    this.heroService.update(this.hero)
+      .then(() => this.goBack());
+  }
 
 }
